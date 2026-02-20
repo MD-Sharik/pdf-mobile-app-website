@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PDF Tools — On‑Device PDF Toolbox</title>
+  
+  <link rel="icon" type="image/png" href="PDF TOOL.png" />
+  <style>
+    :root{--accent:#f29b2c;--primary:#6C63FF;--muted:#7a7a7a;--max:1200px}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,Helvetica,Arial,sans-serif;
+      color:#222;
+      background-image:url('bg.webp');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      -webkit-font-smoothing:antialiased;
+    }
+    .page{min-height:100vh;display:flex;flex-direction:column}
+
+    /* top logo only */
+    .topbar{padding:28px 32px;display:flex;align-items:center}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo img{width:44px;height:44px;border-radius:10px;object-fit:cover}
+    .logo .brand{font-weight:700;letter-spacing:0.6px}
+
+    /* hero */
+    .hero{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:48px 20px 120px;min-height:68vh}
+    /* keep a subtle overlay for contrast but don't load a second background image */
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;z-index:1;max-width:var(--max);width:100%;display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:center}
+
+    /* left column (glass) */
+    .hero-left{
+      position:relative;
+      padding:28px 32px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.08);
+      -webkit-backdrop-filter: blur(8px) saturate(1.05);
+      backdrop-filter: blur(8px) saturate(1.05);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .badge{display:inline-block;padding:6px 12px;background:#eef2ff;color:#334155;border-radius:999px;font-size:13px;margin-bottom:18px}
+    .headline{font-family:Georgia, 'Times New Roman', serif;font-size:44px;line-height:1.03;color:#0b1220;margin:0 0 18px;text-shadow:0 1px 0 rgba(255,255,255,0.12)}
+    .sub{color:rgba(17,24,39,0.65);font-size:16px;margin-bottom:26px;max-width:640px}
+    .cta-row{display:flex;gap:16px;align-items:center}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),#3d45ff);color:#fff;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 10px 36px rgba(59,53,170,0.20)}
+    .btn-ghost{background:transparent;border-radius:12px;padding:12px 18px;color:#374151;border:1px solid rgba(0,0,0,0.08);text-decoration:none}
+
+    /* right column - QR + mock phone (glass) */
+    .card{
+      background: rgba(255,255,255,0.6);
+      -webkit-backdrop-filter: blur(8px) saturate(1.05);
+      backdrop-filter: blur(8px) saturate(1.05);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 10px 40px rgba(2,6,23,0.12);
+      border: 1px solid rgba(255,255,255,0.6);
+      display:flex;flex-direction:column;align-items:center;gap:12px;
+    }
+    .phone-mock{width:180px;height:320px;border-radius:20px;background:linear-gradient(180deg,#fff,#fbfbff);display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,0.06)}
+    .qr-placeholder{width:128px;height:128px;background:repeating-conic-gradient(#222 0% 10%, #fff 10% 20%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#111;font-weight:700}
+    .qr-label{font-size:13px;color:rgba(17,24,39,0.6)}
+
+    /* trusted logos */
+    .trusted{margin-top:36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;opacity:0.85}
+    .trusted img{height:20px;filter:grayscale(1) brightness(.9)}
+
+    /* footer */
+    .hero-note{margin-top:30px;text-align:center;color:#6b7280;font-size:14px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:28px;text-align:center}
+      .card{margin:0 auto;background:rgba(255,255,255,0.95);backdrop-filter:none}
+      .headline{font-size:34px}
+      /* disable heavy glass on small screens for performance & readability */
+      .hero-left{background:transparent;padding:0;border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+    }
+    @media (max-width:420px){.headline{font-size:26px}.qr-placeholder{width:110px;height:110px}.phone-mock{width:150px;height:260px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="logo" href="#">
+        <img src="./PDF TOOL.png" alt="PDF Tools logo" />
+        <div class="brand">PDF Tools</div>
+      </a>
+    </div>
+
+    <main class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="badge">Great News: Now faster & more reliable</div>
+          <h1 class="headline">The Premier On‑Device PDF Toolbox.</h1>
+          <p class="sub">Split, merge, convert images to PDF, add watermarks and electronic signatures — all processing runs locally on your device for privacy and speed.</p>
+
+          <div class="cta-row">
+            <a class="btn-primary" href="#">Download on Google Play</a>
+          </div>
+
+          
+
+          </div>
+
+        <aside class="hero-left">
+          <div style="">
+            <img src="qr.svg" height="150px">
+          </div>
+          <div style="text-align:center">
+            <div style="font-weight:700">Scan to download</div>
+            <div class="qr-label">Open Play Store on your phone</div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer style="text-align:center;padding:24px 16px;color:#9aa0a6;font-size:13px">
+      &copy; 2026 PDF Tools — All rights reserved. <a href="privacy_policy.html">Privacy Policy</a>
+    </footer>
+  </div>
+</body>
+</html>
